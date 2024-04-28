@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace Solitare
 {
-    enum Suit
+    public enum Suit
     {
-        Clubs,
-        Hearts,
-        Diamonds,
-        Spades,
+        C,
+        H,
+        D,
+        S,
     }
+    public static class SuitExtension 
+    {
+        public static string EToString(this Suit suit)
+        {
+            return suit switch
+            {
+                Suit.D => "D",
+                Suit.C => "C",
+                Suit.H => "H",
+                Suit.S => "S"
+
+            };
+         }
+    }
+
 }

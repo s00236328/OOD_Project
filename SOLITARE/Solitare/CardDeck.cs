@@ -40,21 +40,43 @@ namespace Solitare
             {
                 for (int i = 1; i <= 13; i++)
                 {
-                    deck.Add(new Card(s, i));
+                    deck.Add(new Card(s, i.ToString(),false));
                 }
             }
         }
-
-        public override string ToString()
+        public static CardDeck TwoDeck()
         {
-            String s = "";
-            foreach (Card c in deck)
+            var deck = new List<Card>();
+            foreach (Suit s in Enum.GetValues(typeof(Suit)))
             {
-                s += c.suit + "," + c.value + "\n";
+                for (int i = 1; i <= 13; i++)
+                {
+                    deck.Add(new Card(s, i.ToString(), false));
+                    deck.Add(new Card(s, i.ToString(), false));
+                }
             }
-
-            return s;
+            var BigDeck = new CardDeck{ deck = deck};
+            BigDeck.Shuffle();
+            return BigDeck;
+            
         }
+        public (List<Card>, List<Card> cards) SplitDeck()
+        {
+            List<Card> Stock = deck.Take(50).ToList();
+            List<Card> Spider = deck.Skip(50).Take(54).ToList();
+            return (Stock, Spider);
+
+        }
+        //public override string ToString()
+        //
+        //    String s = "";
+        //    foreach (Card c in deck)
+        //    {
+        //        s += c.Suit + "," + c.Value + "\n";
+        //    }
+
+        //    return s;
+        //}
 
     }
 }

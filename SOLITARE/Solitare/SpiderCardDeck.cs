@@ -49,7 +49,7 @@ namespace Solitare
                 }
                 else
                 {
-                    s += deck[i].suit + ":" + deck[i].value + " ";
+                    s += deck[i].Suit + ":" + deck[i].Value + " ";
                 }
             }
 
